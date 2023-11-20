@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/blog/static/css/main.3578cbb9.css",
-    "main.js": "/blog/static/js/main.4b14339d.js",
+    "main.css": "/blog/static/css/main.2288ba56.css",
+    "main.js": "/blog/static/js/main.040c024a.js",
     "static/media/gray-parquet.jpg": "/blog/static/media/gray-parquet.16ff4921b1b4d2a6e62b.jpg",
     "static/media/Steph_Hoel_c.png": "/blog/static/media/Steph_Hoel_c.2aebbb028ef7944ccb2c.png",
+    "static/media/marked.cjs": "/blog/static/media/marked.9d11e79e65a241a47955.cjs",
     "index.html": "/blog/index.html",
-    "main.3578cbb9.css.map": "/blog/static/css/main.3578cbb9.css.map",
-    "main.4b14339d.js.map": "/blog/static/js/main.4b14339d.js.map"
+    "main.2288ba56.css.map": "/blog/static/css/main.2288ba56.css.map",
+    "main.040c024a.js.map": "/blog/static/js/main.040c024a.js.map"
   },
   "entrypoints": [
-    "static/css/main.3578cbb9.css",
-    "static/js/main.4b14339d.js"
+    "static/css/main.2288ba56.css",
+    "static/js/main.040c024a.js"
   ]
 }
