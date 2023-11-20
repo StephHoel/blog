@@ -36,7 +36,8 @@ export default function Layout() {
           <MenuItem href={Path.home}>Home</MenuItem>
           {hasLogin ? (
             <>
-              <MenuItem href={Path.dash}>Dash</MenuItem>
+              <MenuItem href={Path.dash}>Dashboard</MenuItem>
+              <MenuItem href={Path.new}>Novo Post</MenuItem>
               <MenuItem href={Path.home} logout={true}>
                 Sair
               </MenuItem>
@@ -51,7 +52,7 @@ export default function Layout() {
       </header>
 
       <div className="grid-2 overflow-auto ml-4 -mr-2">
-        <main className="px-8 pb-4 text-black font-roboto overflow-auto bg-gray-500/70 rounded-xl">
+        <main className="px-8 pb-4 text-black font-roboto overflow-auto bg-gray-500/90 rounded-xl">
           <Outlet />
         </main>
 

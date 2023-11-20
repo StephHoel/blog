@@ -4,7 +4,7 @@ export const theme = {
   extend: {
     darkMode: 'class',
     screens: {
-      sm: { max: '767px' },
+      sm: { max: '768px' },
       lg: { min: '768px' },
     },
     fontFamily: {

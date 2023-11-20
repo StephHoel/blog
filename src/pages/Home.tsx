@@ -1,8 +1,18 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import MarkdownViewer from '../components/MarkdownViewer'
+import { api } from '../lib/axios'
+import { Post } from '../lib/interface'
 
 export default function Home() {
+  const [posts, setPosts] = useState<Post[]>([])
+
   useEffect(() => {
-    //
+    async function call() {
+      const response = await api.get('/post')
+      setPosts(response.data)
+    }
+
+    call()
   }, [])
 
   return (
@@ -16,8 +26,12 @@ export default function Home() {
 
       <div className="text-center text-2xl">
         <p>Último Post</p>
-        <div className="text-lg text-justify"></div>
-        {/* e lógica para mostrar o último post */}
+        <div className="text-lg text-justify">
+          {posts.length > 0 &&
+            posts.map((post) => (
+              <MarkdownViewer key={post.idPost} markdown={post.content} />
+            ))}
+        </div>
       </div>
     </div>
   )

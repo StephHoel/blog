@@ -16,3 +16,7 @@ export default function TextButton(
 export function ValidateButton(validFields: boolean) {
   return Style.button.all + (validFields ? Style.button.not : Style.button.yes)
 }
+
+export function ValidateButtonPost(validFields: boolean) {
+  return Style.button.post + Style.button.all + (validFields ? Style.button.yes : Style.button.not)
+}
