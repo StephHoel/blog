@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  /* font-family: "Nothing You Could Do", sans-serif; */
+  font-size: 1.6rem;
+
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15)
+  ), url('./images/gray-parquet.jpg');
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+
+  /* background-color: #531172;
+  color: #a7a7a7; */
+}
+
+#body {
+  grid-template-columns: max-content 1fr;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Personalização da barra de rolagem */
+/* Adicione os estilos conforme necessário para atender aos requisitos de personalização */
+/* Para Webkit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Para Firefox */
+/* scrollbar-width: thin;
+scrollbar-color: #888 #f1f1f1; */
