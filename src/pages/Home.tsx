@@ -27,10 +27,9 @@ export default function Home() {
       <div className="text-center text-2xl">
         <p>Último Post</p>
         <div className="text-lg text-justify">
-          {posts.length > 0 &&
-            posts.map((post) => (
-              <MarkdownViewer key={post.idPost} markdown={post.content} />
-            ))}
+          {posts.length > 0 && (
+            <MarkdownViewer key={posts[0].idPost} markdown={posts[0].content} />
+          )}
         </div>
       </div>
     </div>

@@ -69,7 +69,7 @@ export default function New() {
 
         <MarkdownEditor onChange={setContent} />
 
-        <MarkdownViewer markdown={content} />
+        {/* <MarkdownViewer markdown={content} /> */}
 
         <div className="flex gap-4 mt-4">
           <button
