@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/blog-front/static/css/main.b2f948c9.css",
+    "main.js": "/blog-front/static/js/main.aa63b74d.js",
+    "static/media/gray-parquet.jpg": "/blog-front/static/media/gray-parquet.aeb3e00f8962ae74adf2.jpg",
+    "static/media/Steph_Hoel_c.png": "/blog-front/static/media/Steph_Hoel_c.2aebbb028ef7944ccb2c.png",
+    "index.html": "/blog-front/index.html",
+    "main.b2f948c9.css.map": "/blog-front/static/css/main.b2f948c9.css.map",
+    "main.aa63b74d.js.map": "/blog-front/static/js/main.aa63b74d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2f948c9.css",
+    "static/js/main.aa63b74d.js"
+  ]
+}
