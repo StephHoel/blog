@@ -1,8 +1,8 @@
 export const Path = {
-  home: '/blog-front/',
-  login: '/blog-front/login',
-  register: '/blog-front/register',
-  dash: '/blog-front/dash',
+  home: '/blog/',
+  login: '/blog/login',
+  register: '/blog/register',
+  dash: '/blog/dash',
 }
 
 export const Style = {
