@@ -6,7 +6,7 @@
     <script>
       // Redirecionar todas as solicitações para o index.html
       const redirectUrl = window.location.origin + '/blog';
-      window.localStorage.setItem('redirect', window.location.pathname.split('/blog')[0])
+      window.localStorage.setItem('redirect', window.location.pathname)
       window.location.replace(redirectUrl);
     </script>
   </head>
