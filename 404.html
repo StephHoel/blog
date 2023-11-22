@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Redirecionar todas as solicitações para o index.html
+      const redirectUrl = window.location.origin + '/index.html' + window.location.pathname;
+      window.location.replace(redirectUrl);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/index.html">index.html</a>...</p>
+  </body>
+</html>

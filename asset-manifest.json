@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/blog/static/css/main.2288ba56.css",
-    "main.js": "/blog/static/js/main.a8e69a5d.js",
+    "main.js": "/blog/static/js/main.082df271.js",
     "static/media/gray-parquet.jpg": "/blog/static/media/gray-parquet.16ff4921b1b4d2a6e62b.jpg",
     "static/media/Steph_Hoel_c.png": "/blog/static/media/Steph_Hoel_c.2aebbb028ef7944ccb2c.png",
     "static/media/marked.cjs": "/blog/static/media/marked.9d11e79e65a241a47955.cjs",
     "index.html": "/blog/index.html",
     "main.2288ba56.css.map": "/blog/static/css/main.2288ba56.css.map",
-    "main.a8e69a5d.js.map": "/blog/static/js/main.a8e69a5d.js.map"
+    "main.082df271.js.map": "/blog/static/js/main.082df271.js.map"
   },
   "entrypoints": [
     "static/css/main.2288ba56.css",
-    "static/js/main.a8e69a5d.js"
+    "static/js/main.082df271.js"
   ]
 }
