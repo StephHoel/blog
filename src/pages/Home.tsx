@@ -1,15 +1,29 @@
 import { useEffect, useState } from 'react'
-import MarkdownViewer from '../components/MarkdownViewer'
+import { useNavigate } from 'react-router-dom'
+
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
+import { Path } from '../lib/props'
+
+import MarkdownViewer from '../components/MarkdownViewer'
 
 export default function Home() {
+  const navigate = useNavigate()
+
   const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
     async function call() {
       const response = await api.get('/post')
       setPosts(response.data)
+    }
+
+    const redirect = localStorage.getItem('redirect')
+    console.log(redirect)
+    if (redirect !== null) {
+      localStorage.removeItem('redirect')
+      localStorage.setItem('token', redirect.split('/')[3])
+      navigate(Path.changePass)
     }
 
     call()

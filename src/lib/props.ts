@@ -5,6 +5,8 @@ export const Path = {
   dash: '/blog/dash',
   new: '/blog/new',
   edit: '/blog/edit',
+  forgotPass: '/blog/forgot-pass',
+  changePass: '/blog/reset-pass',
 }
 
 export const State = {
@@ -42,4 +44,9 @@ export const Style = {
   label: 'text-left ',
   title: 'text-center mb-4 text-6xl ',
   divError: 'text-error rounded select-none text-left mt-2 ',
+}
+
+export interface ChildProps {
+  onChange: (value: string) => void
+  onValid: (value: boolean) => void
 }

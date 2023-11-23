@@ -10,6 +10,8 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import New from './pages/New'
 import Edit from './pages/Edit'
+import ForgotPass from './pages/ForgotPass'
+import ChangePassword from './pages/ChangePassword'
 
 export default function App() {
   return (
@@ -22,6 +24,8 @@ export default function App() {
         <Route path={Path.dash} element={<Dash />} />
         <Route path={Path.new} element={<New />} />
         <Route path={Path.edit} element={<Edit />} />
+        <Route path={Path.forgotPass} element={<ForgotPass />} />
+        <Route path={Path.changePass} element={<ChangePassword />} />
       </Route>
     </Routes>
   )

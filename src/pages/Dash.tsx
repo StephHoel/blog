@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { formatDate } from '../lib/auxiliar'
+import { formatDate } from '../lib/utils'
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
 import { GetLogin } from '../lib/login'

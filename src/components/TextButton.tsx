@@ -1,7 +1,7 @@
 import { Style } from '../lib/props'
 
 /* eslint-disable prettier/prettier */
-export default function TextButton(
+export function TextButton(
   campo: boolean,
   loading: boolean,
   text: string,

@@ -1,49 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MD5 from 'crypto-js/md5'
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { GetLogin } from '../lib/login'
 import { Path, Style } from '../lib/props'
 
-import { ErrorEmail, ErrorPass, ErrorUser } from '../components/DivError'
-import TextButton, { ValidateButton } from '../components/TextButton'
+import { TextButton, ValidateButton } from '../components/TextButton'
+import Email from '../components/form/Email'
+import Password from '../components/form/Password'
+import Username from '../components/form/Username'
 
 export default function Register() {
   const [username, setUsername] = useState('')
+  const [isValidUser, setIsValidUser] = useState(true)
+
   const [password, setPassword] = useState('')
+  const [isValidPass, setIsValidPass] = useState(true)
+
   const [email, setEmail] = useState('')
+  const [isValidEmail, setIsValidEmail] = useState(true)
 
   const [isLoading, setIsLoading] = useState(false)
-
-  const [isValidUser, setIsValidUser] = useState(true)
-  const [isValidPass, setIsValidPass] = useState(true)
-  const [isValidEmail, setIsValidEmail] = useState(true)
 
   const navigate = useNavigate()
 
   useEffect(() => {
     if (GetLogin()) navigate(Path.dash)
   }, [navigate])
-
-  function validateEmail(e: ChangeEvent<HTMLInputElement>) {
-    const value = e.currentTarget.value
-
-    setEmail(value)
-
-    if (value.includes('@')) {
-      const arroba = value.split('@')[1].split('.')[1]
-
-      if (arroba) {
-        setIsValidEmail(true)
-      } else {
-        setIsValidEmail(false)
-      }
-    } else {
-      setIsValidEmail(false)
-    }
-  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -89,56 +74,11 @@ export default function Register() {
       {/* action="trans/cadastro.php" method="post" */}
       <p className={Style.title}>Cadastro</p>
 
-      <div className="grid">
-        <label className={Style.label}>E-mail:</label>
-        <input
-          type="email"
-          className={Style.input}
-          placeholder="exemplo@email.com"
-          autoComplete="email"
-          value={email}
-          onChange={validateEmail}
-        />
-        {!isValidEmail && <ErrorEmail />}
-      </div>
+      <Email onChange={setEmail} onValid={setIsValidEmail} />
 
-      <div className="grid">
-        <label className={Style.label}>Usuário</label>
-        <input
-          type="text"
-          className={Style.input}
-          placeholder="usuario"
-          autoComplete="username"
-          value={username}
-          onChange={(e) => {
-            const value = e.currentTarget.value
-            setUsername(value)
+      <Username onChange={setUsername} onValid={setIsValidUser} />
 
-            if (value.length < 4) setIsValidUser(false)
-            else setIsValidUser(true)
-          }}
-        />
-        {!isValidUser && <ErrorUser />}
-      </div>
-
-      <div className="grid">
-        <label className={Style.label}>Senha</label>
-        <input
-          type="password"
-          className={Style.input}
-          placeholder="Senha"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => {
-            const value = e.currentTarget.value
-            setPassword(value)
-
-            if (value.length === 0) setIsValidPass(false)
-            else setIsValidPass(true)
-          }}
-        />
-        {!isValidPass && <ErrorPass />}
-      </div>
+      <Password onChange={setPassword} onValid={setIsValidPass} />
 
       <button
         type="submit"
