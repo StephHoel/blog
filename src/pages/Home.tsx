@@ -13,17 +13,20 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
+    const redirect = localStorage.getItem('redirect')
+    localStorage.removeItem('redirect')
+    // console.log(redirect)
+    if (redirect !== undefined && redirect !== null) {
+      const token = redirect.split('/')[3]
+      if (token) {
+        localStorage.setItem('token', token)
+        navigate(Path.changePass)
+      } else navigate(redirect)
+    }
+
     async function call() {
       const response = await api.get('/post')
       setPosts(response.data)
-    }
-
-    const redirect = localStorage.getItem('redirect')
-    console.log(redirect)
-    if (redirect !== null) {
-      localStorage.removeItem('redirect')
-      localStorage.setItem('token', redirect.split('/')[3])
-      navigate(Path.changePass)
     }
 
     call()
