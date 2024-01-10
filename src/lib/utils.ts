@@ -8,7 +8,7 @@ export function formatDate(date: Date): string {
   const hour = date.getHours().toString()
   const minutes = date.getMinutes().toString()
 
-  return `${day}/${month}/${year} ${hour}:${minutes}`
+  return `${day}/${month}/${year} às ${hour}:${minutes}`
 }
 
 export function validateEmail(value: string) {
