@@ -6,4 +6,7 @@ export interface Post {
   state: string
   createdAt: Date
   updatedAt: Date
+  author: {
+    username: string
+  }
 }
