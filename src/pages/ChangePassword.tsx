@@ -7,6 +7,7 @@ import Password from '../components/form/Password'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../lib/axios'
 import { Path, Style } from '../lib/props'
+import { GetItem, RemoveItem } from '../lib/localStorage'
 
 export default function ChangePassword() {
   const [password, setPassword] = useState('')
@@ -18,7 +19,7 @@ export default function ChangePassword() {
   const [isLoading, setIsLoading] = useState(false)
   const [isSamePass, setIsSamePass] = useState(false)
 
-  const token = localStorage.getItem('token')
+  const token = GetItem('token')
   const navigate = useNavigate()
 
   async function handleChangePassword() {
@@ -52,7 +53,7 @@ export default function ChangePassword() {
   }
 
   useEffect(() => {
-    localStorage.removeItem('token')
+    RemoveItem('token')
     if (token !== null) {
       console.log('token', token)
     }

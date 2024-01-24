@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { formatDate } from '../lib/utils'
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
 import { GetLogin } from '../lib/login'
 import { Path, State, Style } from '../lib/props'
+import { formatDate } from '../lib/utils'
 
 import LinesList from '../components/LinesList'
+import { RemoveItem, SetItem } from '../lib/localStorage'
 
 export default function Dash() {
   const [draft, setDraft] = useState<Post[]>([])
@@ -26,24 +27,22 @@ export default function Dash() {
         />
 
         {post.map((line) => (
-          <>
-            <LinesList
-              key={line.idPost}
-              date={formatDate(line.updatedAt)}
-              title={line.title}
-              content={
-                line.content.substring(0, 50) +
-                (line.content.length > 50 ? '...' : '')
-              }
-              clickTrash={() => {
-                DeleteItem(line.idPost)
-              }}
-              clickPencil={() => {
-                localStorage.setItem('idPost', line.idPost)
-                navigate(Path.edit)
-              }}
-            />
-          </>
+          <LinesList
+            key={line.idPost}
+            date={formatDate(line.updatedAt)}
+            title={line.title}
+            content={
+              line.content.substring(0, 50) +
+              (line.content.length > 50 ? '...' : '')
+            }
+            clickTrash={() => {
+              DeleteItem(line.idPost)
+            }}
+            clickPencil={() => {
+              SetItem('idPost', line.idPost)
+              navigate(Path.edit)
+            }}
+          />
         ))}
       </div>
     ) : (
@@ -85,7 +84,7 @@ export default function Dash() {
   useEffect(() => {
     if (!GetLogin()) navigate(Path.home)
 
-    localStorage.removeItem('idPost')
+    RemoveItem('idPost')
 
     call()
   }, [navigate])

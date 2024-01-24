@@ -8,6 +8,7 @@ import { Path, State, Style } from '../lib/props'
 import MarkdownEditor from '../components/MarkdownEditor'
 import { ValidateButtonPost } from '../components/TextButton'
 import { GetLogin } from '../lib/login'
+import { GetItem } from '../lib/localStorage'
 
 export default function Edit() {
   const [post, setPost] = useState<Post>()
@@ -20,7 +21,7 @@ export default function Edit() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const idPost = localStorage.getItem('idPost')
+    const idPost = GetItem('idPost')
 
     async function load() {
       const response = await api.get(`/post/${idPost}`)

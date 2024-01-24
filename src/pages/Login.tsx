@@ -73,14 +73,14 @@ export default function Home() {
         >
           {TextButton(!isValidUser || !isValidPass, isLoading, 'Entrar')}
         </button>
-      </form>
 
-      <Link
-        to={Path.forgotPass}
-        className="flex gap-1 justify-center text-2xl py-4 cursor-pointer"
-      >
-        Esqueceu a senha?
-      </Link>
+        <Link
+          to={Path.forgotPass}
+          className="flex gap-1 justify-center text-2xl py-4 cursor-pointer"
+        >
+          Esqueceu a senha?
+        </Link>
+      </form>
     </>
   )
 }

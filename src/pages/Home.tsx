@@ -4,28 +4,31 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
 import { Path } from '../lib/props'
+import { formatDate } from '../lib/utils'
+import { GetItem, RemoveItem, SetItem } from '../lib/localStorage'
 
 import MarkdownViewer from '../components/MarkdownViewer'
 
 export default function Home() {
   const navigate = useNavigate()
 
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<Post>()
 
   useEffect(() => {
-    const redirect = localStorage.getItem('redirect')
-    localStorage.removeItem('redirect')
+    const redirect = GetItem('redirect')
+    RemoveItem('redirect')
     // console.log(redirect)
     if (redirect !== undefined && redirect !== null) {
       const token = redirect.split('/')[3]
       if (token) {
-        localStorage.setItem('token', token)
+        SetItem('token', token)
         navigate(Path.changePass)
       } else navigate(redirect)
     }
 
     async function call() {
-      const response = await api.get('/post')
+      const response = await api.get('/posts/1')
+      console.log(response)
       setPosts(response.data)
     }
 
@@ -44,8 +47,18 @@ export default function Home() {
       <div className="text-center text-2xl">
         <p>Último Post</p>
         <div className="text-lg text-justify">
-          {posts.length > 0 && (
-            <MarkdownViewer key={posts[0].idPost} markdown={posts[0].content} />
+          {posts && (
+            <>
+              <p>{posts.title}</p>
+              <p>
+                {`por 
+                ${posts.author.username} 
+                em
+                ${formatDate(posts.createdAt)} 
+                / Última atualização: ${formatDate(posts.updatedAt)}`}
+              </p>
+              <MarkdownViewer key={posts.idPost} markdown={posts.content} />
+            </>
           )}
         </div>
       </div>
