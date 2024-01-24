@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
+import { GetItem, RemoveItem, SetItem } from '../lib/localStorage'
 import { Path } from '../lib/props'
 import { formatDate } from '../lib/utils'
-import { GetItem, RemoveItem, SetItem } from '../lib/localStorage'
 
 import MarkdownViewer from '../components/MarkdownViewer'
 
@@ -13,6 +13,7 @@ export default function Home() {
   const navigate = useNavigate()
 
   const [posts, setPosts] = useState<Post>()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const redirect = GetItem('redirect')
@@ -28,8 +29,9 @@ export default function Home() {
 
     async function call() {
       const response = await api.get('/posts/1')
-      console.log(response)
-      setPosts(response.data)
+      // console.log(response)
+      setPosts(response.data[0])
+      setLoading(true)
     }
 
     call()
@@ -47,12 +49,12 @@ export default function Home() {
       <div className="text-center text-2xl">
         <p>Último Post</p>
         <div className="text-lg text-justify">
-          {posts && (
+          {loading && posts && (
             <>
               <p>{posts.title}</p>
               <p>
                 {`por 
-                ${posts.author.username} 
+                    ${posts.author.username} 
                 em
                 ${formatDate(posts.createdAt)} 
                 / Última atualização: ${formatDate(posts.updatedAt)}`}
