@@ -1,6 +1,8 @@
 {
-  "extends": [
-    "@rocketseat/eslint-config/react"
+  "extends": [    
+    "eslintJs.configs.recommended",
+    "tseslint.configs.recommended",
+    "eslintReact.configs"["recommended-typescript"],
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
