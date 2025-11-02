@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MD5 from 'crypto-js/md5'
 import { FormEvent, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { GetLogin } from '../lib/login'
@@ -11,6 +10,7 @@ import { TextButton, ValidateButton } from '../components/TextButton'
 import Email from '../components/form/Email'
 import Password from '../components/form/Password'
 import Username from '../components/form/Username'
+import { useRouter } from 'next/router'
 
 export default function Register() {
   const [username, setUsername] = useState('')
@@ -24,11 +24,11 @@ export default function Register() {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
-    if (GetLogin()) navigate(Path.dash)
-  }, [navigate])
+    if (GetLogin()) router.push(Path.dash)
+  }, [router])
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -58,7 +58,7 @@ export default function Register() {
 
         if (register.status === 201) {
           alert('Cadastrado com sucesso!\nFaça o login para entrar...')
-          navigate(Path.login)
+          router.push(Path.login)
         }
       } catch (err: any) {
         console.log('>', err.response.data.message)

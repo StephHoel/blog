@@ -1,12 +1,12 @@
 export const Path = {
-  home: '/blog/',
-  login: '/blog/login',
-  register: '/blog/register',
-  dash: '/blog/dash',
-  new: '/blog/new',
-  edit: '/blog/edit',
-  forgotPass: '/blog/forgot-pass',
-  changePass: '/blog/reset-pass',
+  home: '/',
+  login: '/login',
+  register: '/register',
+  dash: '/dash',
+  new: '/new',
+  edit: '/edit',
+  forgotPass: '/forgot-pass',
+  changePass: '/reset-pass',
 }
 
 export const State = {

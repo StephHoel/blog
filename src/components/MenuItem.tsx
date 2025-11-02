@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import { RemoveLogin } from '../lib/login'
+import Link from 'next/link'
 
 interface MenuItemProps {
   href: string
@@ -15,7 +15,7 @@ export default function MenuItem({
 }: MenuItemProps) {
   return (
     <Link
-      to={href}
+      href={href}
       className="p-2 lg:text-4xl text-center text-black rounded-xl bg-gray-500 hover:bg-gray-500/50"
       onClick={() => {
         if (logout) RemoveLogin()

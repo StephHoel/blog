@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import { TextButton, ValidateButton } from '../components/TextButton'
 import Password from '../components/form/Password'
 
-import { useNavigate } from 'react-router-dom'
 import { api } from '../lib/axios'
 import { Path, Style } from '../lib/props'
 import { GetItem, RemoveItem } from '../lib/localStorage'
+import { useRouter } from 'next/router'
 
 export default function ChangePassword() {
   const [password, setPassword] = useState('')
@@ -20,7 +20,7 @@ export default function ChangePassword() {
   const [isSamePass, setIsSamePass] = useState(false)
 
   const token = GetItem('token')
-  const navigate = useNavigate()
+  const router = useRouter()
 
   async function handleChangePassword() {
     setIsSamePass(password === passwordConfirm)
@@ -38,7 +38,7 @@ export default function ChangePassword() {
         if (response.status === 200) {
           alert('Senha alterada com sucesso!')
           console.log('Senha alterada com sucesso!')
-          navigate(Path.login)
+          router.push(Path.login)
         } else {
           alert('Erro ao alterar a senha')
           console.error('Erro ao alterar a senha')

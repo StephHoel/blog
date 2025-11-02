@@ -1,18 +1,23 @@
 /** @type { import('tailwindcss').Config } */
-export const purge = ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html']
-export const theme = {
-  extend: {
-    darkMode: 'class',
-    screens: {
-      sm: { max: '768px' },
-      lg: { min: '768px' },
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      darkMode: 'class',
+      screens: {
+        sm: { max: '768px' },
+        lg: { min: '768px' },
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+      },
+      colors: {
+        french: '#B8A598',
+        error: '#CD001A',
+      },
     },
-    fontFamily: {
-      roboto: ['Roboto', 'sans-serif'],
-    },
-    colors: {
-      french: '#B8A598',
-      error: '#CD001A',
-    },
-  },
+  }
 }

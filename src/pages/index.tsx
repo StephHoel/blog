@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
@@ -8,9 +7,10 @@ import { Path } from '../lib/props'
 import { formatDate } from '../lib/utils'
 
 import MarkdownViewer from '../components/MarkdownViewer'
+import { useRouter } from 'next/router'
 
 export default function Home() {
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const [posts, setPosts] = useState<Post>()
   const [loading, setLoading] = useState(false)
@@ -23,8 +23,8 @@ export default function Home() {
       const token = redirect.split('/')[3]
       if (token) {
         SetItem('token', token)
-        navigate(Path.changePass)
-      } else navigate(redirect)
+        router.push(Path.changePass)
+      } else router.push(redirect)
     }
 
     async function call() {

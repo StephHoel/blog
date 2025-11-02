@@ -1,5 +1,4 @@
 import { FormEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { Path, Style } from '../lib/props'
@@ -7,6 +6,7 @@ import { Path, Style } from '../lib/props'
 import { TextButton, ValidateButton } from '../components/TextButton'
 import Email from '../components/form/Email'
 import Username from '../components/form/Username'
+import { useRouter } from 'next/router'
 
 export default function ForgotPass() {
   const [username, setUsername] = useState('')
@@ -17,7 +17,7 @@ export default function ForgotPass() {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -45,7 +45,7 @@ export default function ForgotPass() {
             alert(
               'E-mail de recuperação enviado, confira sua caixa de entrada!',
             )
-            navigate(Path.login)
+            router.push(Path.login)
             break
           case 404:
             // se retorna 404, não existe usuario e email, avisa "não encontrado"

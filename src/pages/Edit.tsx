@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
@@ -9,6 +8,7 @@ import MarkdownEditor from '../components/MarkdownEditor'
 import { ValidateButtonPost } from '../components/TextButton'
 import { GetLogin } from '../lib/login'
 import { GetItem } from '../lib/localStorage'
+import { useRouter } from 'next/router'
 
 export default function Edit() {
   const [post, setPost] = useState<Post>()
@@ -18,7 +18,7 @@ export default function Edit() {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
     const idPost = GetItem('idPost')
@@ -54,7 +54,7 @@ export default function Edit() {
           },
         )
 
-        if (update.status === 204) navigate(Path.dash)
+        if (update.status === 204) router.push(Path.dash)
         else {
           alert('Ocorreu um erro, tente novamente mais tarde!')
           setIsLoading(false)

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { Post } from '../lib/interface'
@@ -9,12 +8,13 @@ import { formatDate } from '../lib/utils'
 
 import LinesList from '../components/LinesList'
 import { RemoveItem, SetItem } from '../lib/localStorage'
+import { useRouter } from 'next/router'
 
 export default function Dash() {
   const [draft, setDraft] = useState<Post[]>([])
   const [post, setPost] = useState<Post[]>([])
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   function Lines(post: Post[], texto: string) {
     return post.length ? (
@@ -40,7 +40,7 @@ export default function Dash() {
             }}
             clickPencil={() => {
               SetItem('idPost', line.idPost)
-              navigate(Path.edit)
+              router.push(Path.edit)
             }}
           />
         ))}
@@ -82,12 +82,12 @@ export default function Dash() {
   }
 
   useEffect(() => {
-    if (!GetLogin()) navigate(Path.home)
+    if (!GetLogin()) router.push(Path.home)
 
     RemoveItem('idPost')
 
     call()
-  }, [navigate])
+  }, [router])
 
   return (
     <div className="gap-4 grid">

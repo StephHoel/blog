@@ -1,6 +1,6 @@
 import { MD5 } from 'crypto-js'
 import { FormEvent, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 
 import { api } from '../lib/axios'
 import { GetLogin, SetLogin } from '../lib/login'
@@ -9,6 +9,7 @@ import { Path, Style } from '../lib/props'
 import { TextButton, ValidateButton } from '../components/TextButton'
 import Password from '../components/form/Password'
 import Username from '../components/form/Username'
+import { Link } from '@phosphor-icons/react'
 
 export default function Home() {
   const [username, setUsername] = useState('')
@@ -19,11 +20,11 @@ export default function Home() {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
-    if (GetLogin()) navigate(Path.dash)
-  }, [navigate])
+    if (GetLogin()) router.push(Path.dash)
+  }, [router])
 
   async function handleSubmitLogin(e: FormEvent) {
     e.preventDefault()
@@ -44,7 +45,7 @@ export default function Home() {
 
         if (login.status === 200) {
           SetLogin(login.data.idLogin)
-          navigate(Path.dash)
+          router.push(Path.dash)
         }
       } catch (err: any) {
         // console.log(err)

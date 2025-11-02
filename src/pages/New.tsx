@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { api } from '../lib/axios'
 import { GetLogin } from '../lib/login'
 import { Path, State, Style } from '../lib/props'
 
 import MarkdownEditor from '../components/MarkdownEditor'
-import MarkdownViewer from '../components/MarkdownViewer'
 import { ValidateButtonPost } from '../components/TextButton'
+import { useRouter } from 'next/router'
 
 export default function New() {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
-    if (!GetLogin()) navigate(Path.home)
-  }, [navigate])
+    if (!GetLogin()) router.push(Path.home)
+  }, [router])
 
   async function handleSubmit(type: string) {
     setIsLoading(true)
@@ -39,7 +38,7 @@ export default function New() {
           },
         )
 
-        if (post.status === 200) navigate(Path.dash)
+        if (post.status === 200) router.push(Path.dash)
         else {
           alert('Ocorreu um erro, tente novamente mais tarde!')
           console.log(post)
